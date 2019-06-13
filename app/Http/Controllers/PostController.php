@@ -10,7 +10,12 @@ class PostController extends Controller
     //
     public function index()
     {
-        return view('post/index');
+        $posts = [
+            ['title' => 'this is title1'],
+            ['title' => 'this is title2'],
+            ['title' => 'this is title3'],
+        ];
+        return view('post/index',['posts'=>$posts]);
     }
 
     //
