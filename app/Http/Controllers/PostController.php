@@ -16,7 +16,7 @@ class PostController extends Controller
     //
     public function show()
     {
-        return view('post/show');
+        return view('post/show',['title'=>'this is title','isShow'=>false]);
     }
 
     //

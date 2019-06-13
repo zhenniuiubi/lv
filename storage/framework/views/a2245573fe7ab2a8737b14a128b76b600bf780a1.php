@@ -81,11 +81,13 @@
     <div class="col-sm-8 blog-main">
         <div class="blog-post">
             <div style="display:inline-flex">
-                    <h2 class="blog-post-title">你好你好</h2>
-                                        <a style="margin: auto"  href="/posts/62/edit">
+                    <h2 class="blog-post-title"><?php echo e($title); ?></h2>
+                    <?php if($isShow ==true): ?>
+                    <a style="margin: auto"  href="/posts/62/edit">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
-                                                            <a style="margin: auto"  href="/posts/62/delete">
+                    <?php endif; ?>
+                    <a style="margin: auto"  href="/posts/62/delete">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                                 </div>
