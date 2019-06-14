@@ -15,7 +15,10 @@ class PostController extends Controller
             ['title' => 'this is title2'],
             ['title' => 'this is title3'],
         ];
-        return view('post/index',['posts'=>$posts]);
+        //如需添加新的数据
+        $topics=[];
+        //建议用compcact写法
+        return view('post/index',compact('posts','topics'));
     }
 
     //
