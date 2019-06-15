@@ -4,27 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \App\Post;
 
 class PostController extends Controller
 {
     //
     public function index()
     {
-        $posts = [
-            ['title' => 'this is title1'],
-            ['title' => 'this is title2'],
-            ['title' => 'this is title3'],
-        ];
-        //如需添加新的数据
-        $topics=[];
-        //建议用compcact写法
-        return view('post/index',compact('posts','topics'));
+        $posts = Post::orderBy('create_at', 'desc')->get();
+
+        return view('post/index', compact('posts'));
     }
 
     //
     public function show()
     {
-        return view('post/show',['title'=>'this is title','isShow'=>false]);
+        return view('post/show', ['title'=>'this is title','isShow'=>false]);
     }
 
     //
