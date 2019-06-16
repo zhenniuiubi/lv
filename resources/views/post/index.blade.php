@@ -36,9 +36,9 @@
     <div>
         @foreach ($posts as $post)
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href="/posts/62">{{ $post['title'] or '标题没传值' }}</a></h2>
-            <p class="blog-post-meta">May 14, 2017 by <a href="/user/5">Kassandra Ankunding2</a></p>
-            <p>你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好...
+            <h2 class="blog-post-title"><a href="/posts/62">{{ $post->title or '标题没传值' }}</a></h2>
+            <p class="blog-post-meta">{{ $post->created_at }} <a href="/user/5">Kassandra Ankunding2</a></p>
+            <p>{{ $post->content }}
                 <p class="blog-post-meta">赞 0 | 评论 0</p>
         </div>
         @endforeach
