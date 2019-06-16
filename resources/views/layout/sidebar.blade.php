@@ -8,7 +8,7 @@
                 欢迎来到简书网站
             </p>
             <p>
-                <strong><a href="/">简书网站</a></strong> 基于 Laravel5.4 构建
+                <strong><a href="/">简书网站</a></strong> 基于 Laravel5.5 构建
             </p>
             <div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1494580268777"><a href="#"
                     class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina"

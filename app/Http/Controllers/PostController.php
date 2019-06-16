@@ -4,33 +4,40 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \App\Post;
+use App\Post;
 
 class PostController extends Controller
 {
     //
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
 
         return view('post/index', compact('posts'));
     }
 
     //
-    public function show()
+    public function show(Post $post)
     {
-        return view('post/show', ['title'=>'this is title','isShow'=>false]);
+        return view('post/show', compact('post'));
     }
 
-    //
+    //显示创建页面
     public function create()
     {
         return view('post/create');
     }
 
-    //编辑
+    //保存逻辑
     public function store()
     {
+        //验证
+        $this->validate(request(),[
+            'title'=>'required|string|max:100',
+            'content'=>'required|string|min:10',
+        ]);
+        $res = Post::create((request(['title','content'])));
+        return redirect('/posts');
     }
 
     //编辑逻辑

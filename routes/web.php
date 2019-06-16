@@ -20,8 +20,9 @@ Route::get('/test', function () {
 });
 //文章列表页
 Route::get('/posts', '\App\Http\Controllers\PostController@index');
-//创建文章
+//创建文章 只显示模版
 Route::get('/posts/create', '\App\Http\Controllers\PostController@create');
+//保存逻辑
 Route::post('/posts', '\App\Http\Controllers\PostController@store');
 //文章详情页
 Route::get('/posts/{post}', '\App\Http\Controllers\PostController@show');

@@ -20,11 +20,11 @@
     16 => 'Illuminate\\Redis\\RedisServiceProvider',
     17 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
     18 => 'Illuminate\\Session\\SessionServiceProvider',
-    19 => 'Illuminate\\Translation\\TranslationServiceProvider',
-    20 => 'Illuminate\\Validation\\ValidationServiceProvider',
-    21 => 'Illuminate\\View\\ViewServiceProvider',
-    22 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    23 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    19 => 'Illuminate\\Validation\\ValidationServiceProvider',
+    20 => 'Illuminate\\View\\ViewServiceProvider',
+    21 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    22 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    23 => 'Overtrue\\LaravelLang\\TranslationServiceProvider',
     24 => 'App\\Providers\\AppServiceProvider',
     25 => 'App\\Providers\\AuthServiceProvider',
     26 => 'App\\Providers\\EventServiceProvider',
@@ -141,11 +141,12 @@
     'redis.connection' => 'Illuminate\\Redis\\RedisServiceProvider',
     'auth.password' => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
     'auth.password.broker' => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
-    'translator' => 'Illuminate\\Translation\\TranslationServiceProvider',
-    'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'translator' => 'Overtrue\\LaravelLang\\TranslationServiceProvider',
+    'translation.loader' => 'Overtrue\\LaravelLang\\TranslationServiceProvider',
+    'Overtrue\\LaravelLang\\Commands\\Publish' => 'Overtrue\\LaravelLang\\TranslationServiceProvider',
   ),
   'when' => 
   array (
@@ -179,13 +180,13 @@
     'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider' => 
     array (
     ),
-    'Illuminate\\Translation\\TranslationServiceProvider' => 
-    array (
-    ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Overtrue\\LaravelLang\\TranslationServiceProvider' => 
     array (
     ),
   ),
