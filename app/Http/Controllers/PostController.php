@@ -11,8 +11,9 @@ class PostController extends Controller
     //
     public function index()
     {
+        \DB::connection()->enableQueryLog();  // 开启QueryLog
         $posts = Post::orderBy('created_at', 'desc')->paginate(6);
-
+        dd(\DB::getQueryLog());
         return view('post/index', compact('posts'));
     }
 
