@@ -1,5 +1,5 @@
 @extends('layout.main')
-            
+
 @section('content')
 <div class="col-sm-8 blog-main">
     <div>
@@ -36,9 +36,9 @@
     <div>
         @foreach ($posts as $post)
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href="/posts/62">{{ $post->title or '标题没传值' }}</a></h2>
+            <h2 class="blog-post-title"><a href="{{ route('post.edit',['id'=>$post->id]) }}">{{ $post->title or '标题没传值' }}</a></h2>
             <p class="blog-post-meta">{{ $post->created_at }} <a href="/user/5">Kassandra Ankunding2</a></p>
-            <p>{{ str_limit($post->content, 100,'...') }}
+            {!! str_limit($post->content, 100,'...') !!}
                 <p class="blog-post-meta">赞 0 | 评论 0</p>
         </div>
         @endforeach
