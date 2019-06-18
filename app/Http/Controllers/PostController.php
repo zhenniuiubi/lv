@@ -41,15 +41,15 @@ class PostController extends Controller
         return redirect('/posts');
     }
 
-    //更新逻辑
+    //编辑逻辑
     public function update(Request $request, Post $post)
     {
         $this->validate($request, [
             'title' => 'required|max:255|min:4',
             'content' => 'required|min:100',
         ]);
-
-        $this->authorize('update', $post);
+        //TODO::用户权限
+        // $this->authorize('update', $post);
 
         $post->update(request(['title', 'content']));
         return redirect("/posts/{$post->id}");
@@ -66,5 +66,12 @@ class PostController extends Controller
     {
         $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
         return asset('storage/'.$path);
+    }
+
+    public function delete(Post $post)
+    {
+        //TODO::用户权限
+        $post->delete();
+        return redirect('/posts');
     }
 }
