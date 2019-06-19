@@ -34,7 +34,7 @@ class PostController extends Controller
     {
         //验证
         $this->validate(request(), [
-            'title'=>'required|string|max:100',
+            'title'=>'required|string|min:5',
             'content'=>'required|string|min:10',
         ]);
         //逻辑
@@ -50,13 +50,13 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255|min:4',
-            'content' => 'required|min:100',
+            'content' => 'required|min:5',
         ]);
         //权限
         $this->authorize('update', $post);
 
         $post->update(request(['title', 'content']));
-        return redirect("/posts/{$post->id}");
+        return redirect("/posts/$post->id");
     }
 
     //编辑页面
@@ -74,7 +74,8 @@ class PostController extends Controller
 
     public function delete(Post $post)
     {
-        //TODO::用户权限
+        //权限
+        $this->authorize('update', $post);
         $post->delete();
         return redirect('/posts');
     }

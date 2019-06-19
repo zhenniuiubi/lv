@@ -3,7 +3,7 @@
     
 @section('content')
 <div class="col-sm-8 blog-main">
-    <form action="/posts/62" method="POST">
+    <form action="/posts/{{ $post->id }}" method="POST">
         {{ method_field('PUT') }}
         {{ csrf_field() }}
         <div class="form-group">
