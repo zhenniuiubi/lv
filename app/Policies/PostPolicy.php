@@ -22,11 +22,11 @@ class PostPolicy
     //修改权限
     public function update(User $user, Post $post)
     {
-        return $user->id == $post->id;
+        return $user->id === $post->user_id;
     }
     //删除权限
     public function delete(User $user, Post $post)
     {
-        return $user->id == $post->id;
+        return $user->id === $post->user_id;
     }
 }
