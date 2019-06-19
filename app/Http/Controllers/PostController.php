@@ -52,8 +52,8 @@ class PostController extends Controller
             'title' => 'required|max:255|min:4',
             'content' => 'required|min:100',
         ]);
-        //TODO::用户权限
-        // $this->authorize('update', $post);
+        //权限
+        $this->authorize('update', $post);
 
         $post->update(request(['title', 'content']));
         return redirect("/posts/{$post->id}");
