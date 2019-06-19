@@ -46,8 +46,8 @@ Route::get('/login', 'LoginController@index');
 //登录行为
 Route::post('/login', 'LoginController@login');
 //登出行为
-Route::get('/logout', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 //个人设置页面
-Route::get('/user/me/setting', 'UserController@setting');
+Route::get('/user/me/setting', 'UserController@setting')->name('profile');
 //个人设置操作
 Route::post('/user/me/setting', 'UserController@settingStore');

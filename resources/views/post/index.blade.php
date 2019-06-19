@@ -36,8 +36,8 @@
     <div>
         @foreach ($posts as $post)
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href="{{ route('post.edit',['id'=>$post->id]) }}">{{ $post->title or '标题没传值' }}</a></h2>
-            <p class="blog-post-meta">{{ $post->created_at }} <a href="/user/5">Kassandra Ankunding2</a></p>
+            <h2 class="blog-post-title"><a href="{{ url('/posts').'/'.$post->id }}">{{ $post->title or '标题没传值' }}</a></h2>
+            <p class="blog-post-meta">{{ $post->created_at }} by<a href="{{ route('profile',\Auth::user()->id)}}"> {{ $post->user->name }}</a></p>
             {!! str_limit($post->content, 100,'...') !!}
                 <p class="blog-post-meta">赞 0 | 评论 0</p>
         </div>

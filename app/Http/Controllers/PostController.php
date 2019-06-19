@@ -37,7 +37,11 @@ class PostController extends Controller
             'title'=>'required|string|max:100',
             'content'=>'required|string|min:10',
         ]);
-        $post = Post::create((request(['title','content'])));
+        //逻辑
+        $user_id = \Auth::id();
+        $params = array_merge(request(['title','content']), compact('user_id'));
+        
+        $post = Post::create($params);
         return redirect('/posts');
     }
 

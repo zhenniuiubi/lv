@@ -13,7 +13,7 @@
             </a>
         </div>
 
-        <p class="blog-post-meta"{{ $post->created_at }} <a href="#">Kassandra Ankunding2</a></p>
+        <p class="blog-post-meta"{{ $post->created_at }} <a href="#">{{ $post->user->name }}</a></p>
 
         <p>
             <p>{{ $post->title }}<img
