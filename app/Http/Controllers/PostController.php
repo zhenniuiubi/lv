@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Upvote;
+use App\Comment;
 
 class PostController extends Controller
 {
@@ -12,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
         // \DB::connection()->enableQueryLog();  // 开启QueryLog
-        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
+        $posts = Post::orderBy('created_at', 'desc')->withCount(['comments','upvotes'])->paginate(6);
         // dd(\DB::getQueryLog());
         return view('post/index', compact('posts'));
     }
@@ -20,6 +22,7 @@ class PostController extends Controller
     //
     public function show(Post $post)
     {
+        $post->load('comments');
         return view('post/show', compact('post'));
     }
 
@@ -78,5 +81,42 @@ class PostController extends Controller
         $this->authorize('update', $post);
         $post->delete();
         return redirect('/posts');
+    }
+
+    public function comment(Post $post)
+    {
+        $this->validate(request(), [
+            'content' => 'required|min:3',
+        ]);
+        //逻辑
+        $comment = new Comment();
+        $comment->user_id = \Auth::id();
+        $comment->content = request('content');
+        $post->comments()->save($comment);
+        //渲染
+        return back();
+    }
+
+    //点赞
+    public function upvote(Post $post)
+    {
+        $params = [
+            'user_id' => \Auth::id(),
+            'post_id' => $post->id,
+        ];
+        Upvote::firstOrCreate($params);
+        return back();
+    }
+
+    //取消赞
+    public function cancelUpvote(Post $post)
+    {
+        $params = [
+            'user_id' => \Auth::id(),
+            'post_id' => $post->id,
+        ];
+        //可以在关联关系上使用任何查询构建器！
+        $post->upvote(\Auth::id())->delete();
+        return back();
     }
 }
